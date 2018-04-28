@@ -6,13 +6,6 @@ public class Cliente extends com.agroall.gessica.dataobjects.Cliente implements 
 	
 	private Integer id;
 	
-	public Cliente() {}
-	
-	public Cliente(String razaoSocial, String nomeFantasia) {
-		setRazaoSocial(razaoSocial);
-		setNomeFantasia(nomeFantasia);
-	}
-	
 	@Override
 	public Integer getId() {
 		return this.id;
