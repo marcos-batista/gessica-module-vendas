@@ -7,25 +7,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.agroall.gessica.controllers.ResourceController;
+import com.agroall.gessica.controllers.GessicaDataCollectionResourceController;
 import com.agroall.gessica.services.Service;
 import com.agroall.gessica.vendas.dataobjects.Cliente;
 import com.agroall.gessica.vendas.services.ClienteService;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClientesResource extends ResourceController<Cliente> {
+public class ClientesResource extends GessicaDataCollectionResourceController<Cliente> {
 	
 	@Autowired private ClienteService service;
 	
 	@Override
 	protected Service<Cliente> getService() {
-		return this.service;	
+		return this.service;
 	}
 	
+	@Override
 	@RequestMapping(method = RequestMethod.GET)
-	public Collection<Cliente> listClientes() {
-		return this.service.listAll();
+	public Collection<Cliente> doList() {
+		return super.doList();
 	}
 	
 }

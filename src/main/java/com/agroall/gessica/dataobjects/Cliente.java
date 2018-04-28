@@ -1,6 +1,6 @@
 package com.agroall.gessica.dataobjects;
 
-import com.agroall.gessica.dataobjects.enums.CategoriaCliente;
+import com.agroall.gessica.dataobjects.classifiers.CategoriaCliente;
 
 public class Cliente {
 	

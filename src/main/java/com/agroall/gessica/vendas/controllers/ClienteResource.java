@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.agroall.gessica.controllers.SingleResourceController;
+import com.agroall.gessica.controllers.GessicaDataObjectResourceController;
 import com.agroall.gessica.services.Service;
 import com.agroall.gessica.vendas.dataobjects.Cliente;
 import com.agroall.gessica.vendas.services.ClienteService;
 
 @RestController
 @RequestMapping("/cliente")
-public class ClienteResource extends SingleResourceController<Cliente> {
+public class ClienteResource extends GessicaDataObjectResourceController<Cliente> {
 	
 	@Autowired private ClienteService service;
 	
@@ -37,8 +37,8 @@ public class ClienteResource extends SingleResourceController<Cliente> {
 	
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Cliente doGet(@PathVariable(value = "id") String id) {
-		return this.service.findById(id);
+	public Cliente doGet(@PathVariable(value = "id") Integer id) {
+		return super.doGet(id);
 	}
 	
 	@Override

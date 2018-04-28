@@ -2,33 +2,18 @@ package com.agroall.gessica.services;
 
 import java.util.Collection;
 
-import com.agroall.gessica.repositories.Repository;
-
-public abstract class Service<DATAOBJECT> {
-	
-	protected abstract Repository getRepository();
+public interface Service<DATAOBJECT> {
 	
 	public abstract DATAOBJECT factoryNewDataObject();
 	
-	public void insert(DATAOBJECT dataObject) {
-		getRepository().insert(dataObject);
-	}
+	public DATAOBJECT insert(DATAOBJECT dataObject);
 	
-	public void update(DATAOBJECT dataObject) {
-		getRepository().update(dataObject);
-	}
+	public DATAOBJECT update(DATAOBJECT dataObject);
 	
-	public void delete(DATAOBJECT dataObject) {
-		getRepository().delete(dataObject);
-	}
+	public void delete(DATAOBJECT dataObject);
 	
-	public DATAOBJECT findById(Object id) {
-		return getRepository().findById(id);
-	}
+	public DATAOBJECT findById(Integer id);
 	
-	public Collection<DATAOBJECT> listAll() {
-		return getRepository().listAll();
-	}
-	
+	public Collection<DATAOBJECT> listAll();
 	
 }

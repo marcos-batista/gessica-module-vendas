@@ -1,8 +1,10 @@
 package com.agroall.gessica.vendas.dataobjects;
 
-public class Cliente extends com.agroall.gessica.dataobjects.Cliente {
+import com.agroall.gessica.dataobjects.aspects.Persistent;
+
+public class Cliente extends com.agroall.gessica.dataobjects.Cliente implements Persistent {
 	
-	private String id;
+	private Integer id;
 	
 	public Cliente() {}
 	
@@ -11,12 +13,14 @@ public class Cliente extends com.agroall.gessica.dataobjects.Cliente {
 		setNomeFantasia(nomeFantasia);
 	}
 	
-	public String getId() {
-		return id;
+	@Override
+	public Integer getId() {
+		return this.id;
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	@Override
+	public void setId(Integer id) {
+		this.id = (Integer) id;
 	}
 	
 }

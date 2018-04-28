@@ -6,12 +6,12 @@ import java.util.Collection;
 public class MongoDBRepository implements Repository {
 	
 	@SuppressWarnings("restriction")
-	public <DATAOBJECT> void insert(DATAOBJECT dataObject) {
+	public <DATAOBJECT> DATAOBJECT insert(DATAOBJECT dataObject) {
 		throw new sun.reflect.generics.reflectiveObjects.NotImplementedException();
 	}
 	
 	@SuppressWarnings("restriction")
-	public <DATAOBJECT> void update(DATAOBJECT dataObject) {
+	public <DATAOBJECT> DATAOBJECT update(DATAOBJECT dataObject) {
 		throw new sun.reflect.generics.reflectiveObjects.NotImplementedException();
 	}
 	

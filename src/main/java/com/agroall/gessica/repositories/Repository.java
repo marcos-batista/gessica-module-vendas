@@ -4,9 +4,9 @@ import java.util.Collection;
 
 public interface Repository {
 	
-	public <DATAOBJECT> void insert(DATAOBJECT dataObject);
+	public <DATAOBJECT> DATAOBJECT insert(DATAOBJECT dataObject);
 	
-	public <DATAOBJECT> void update(DATAOBJECT dataObject);
+	public <DATAOBJECT> DATAOBJECT update(DATAOBJECT dataObject);
 	
 	public <DATAOBJECT> void delete(DATAOBJECT dataObject);
 	

@@ -1,4 +1,4 @@
-package com.agroall.gessica.dataobjects.enums;
+package com.agroall.gessica.dataobjects.classifiers;
 
 public enum CategoriaCliente {
 	

@@ -1,9 +1,5 @@
 package com.agroall.gessica.controllers;
 
-import com.agroall.gessica.services.Service;
+public interface ResourceController extends Controller {
 
-public abstract class ResourceController<DATAOBJECT> {
-	
-	protected abstract Service<DATAOBJECT> getService();
-	
 }
