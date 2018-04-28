@@ -1,11 +1,13 @@
 package com.agroall.gessica.vendas;
 
-//public class VendasModuleServletInitializer extends SpringBootServletInitializer {
-public class VendasModuleServletInitializer {
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+
+public class VendasModuleServletInitializer extends SpringBootServletInitializer {
 	
-//	@Override
-//	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-//		return builder.sources(VendasModule.class);
-//	}
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(VendasModule.class);
+	}
 	
 }
