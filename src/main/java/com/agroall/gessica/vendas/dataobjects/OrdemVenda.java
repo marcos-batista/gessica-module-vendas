@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.agroall.gessica.dataobjects.Venda;
 import com.agroall.gessica.dataobjects.aspects.Persistent;
 
-public class OrdemVenda extends Venda implements Persistent {
+public class OrdemVenda extends Venda implements Persistent<Integer> {
 	
 	private Integer id;
 	private Collection<ItemOrdemVenda> itens;

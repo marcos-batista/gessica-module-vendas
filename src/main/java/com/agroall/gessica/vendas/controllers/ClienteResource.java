@@ -37,7 +37,7 @@ public class ClienteResource extends GessicaDataObjectResourceController<Cliente
 	
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Cliente doGet(@PathVariable(value = "id") Integer id) {
+	public Cliente doGet(@PathVariable(value = "id") Object id) {
 		return super.doGet(id);
 	}
 	
