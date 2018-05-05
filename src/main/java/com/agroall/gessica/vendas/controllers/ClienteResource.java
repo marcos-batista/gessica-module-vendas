@@ -1,6 +1,7 @@
 package com.agroall.gessica.vendas.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class ClienteResource extends GessicaDataObjectResourceController<Cliente
 	}
 	
 	@Override
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET)
 	public Cliente doGet() {
 		return super.doGet();
