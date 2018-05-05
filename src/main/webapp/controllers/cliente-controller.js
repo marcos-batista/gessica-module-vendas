@@ -3,7 +3,8 @@ ClienteController.$inject = ['$scope', '$http'];
 
 function ClienteController($scope, $http)
 {
-	var applicationHost = 'http://localhost:8080';
+	//var applicationHost = 'http://localhost:8080';						//------>>>>> DEV
+	var applicationHost = 'https://gessica-module-vendas.herokuapp.com/';	//------>>>>> PRD
 	var defaultHeaders = [{'content-type': 'application/json'}];
 	
 	$scope.clientes = [];
