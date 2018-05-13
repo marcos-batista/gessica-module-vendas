@@ -37,7 +37,7 @@ public class OrdemVendaRepositoryImpl implements Repository {
 	}
 
 	@Override
-	@SuppressWarnings({"unchecked"})
+	@SuppressWarnings("unchecked")
 	public <OrdemVenda> Collection<OrdemVenda> listAll_() {
 		List<com.agroall.gessica.vendas.dataobjects.OrdemVenda> result = mongo.findAll(com.agroall.gessica.vendas.dataobjects.OrdemVenda.class);
 		return (Collection<OrdemVenda>) result;

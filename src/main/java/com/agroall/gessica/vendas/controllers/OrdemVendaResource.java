@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.agroall.gessica.controllers.GessicaDataObjectResourceController;
+import com.agroall.gessica.controllers.DataObjectResourceControllerImpl;
 import com.agroall.gessica.services.Service;
 import com.agroall.gessica.vendas.dataobjects.OrdemVenda;
 import com.agroall.gessica.vendas.services.OrdemVendaService;
@@ -16,7 +16,7 @@ import com.agroall.gessica.vendas.services.OrdemVendaService;
 @RestController
 @RequestMapping("/venda")
 @CrossOrigin
-public class OrdemVendaResource extends GessicaDataObjectResourceController<OrdemVenda> {
+public class OrdemVendaResource extends DataObjectResourceControllerImpl<OrdemVenda> {
 	
 	@Autowired private OrdemVendaService service;
 	
@@ -53,8 +53,8 @@ public class OrdemVendaResource extends GessicaDataObjectResourceController<Orde
 	
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = "application/json", produces = "application/json")
-	public OrdemVenda doDelete(OrdemVenda dataObject) {
-		return super.doDelete(dataObject);
+	public OrdemVenda doDelete(OrdemVenda ordemVenda) {
+		return super.doDelete(ordemVenda);
 	}
 	
 }

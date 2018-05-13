@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.agroall.gessica.controllers.GessicaDataCollectionResourceController;
+import com.agroall.gessica.controllers.DataCollectionResourceControllerImpl;
 import com.agroall.gessica.services.Service;
 import com.agroall.gessica.vendas.dataobjects.OrdemVenda;
 import com.agroall.gessica.vendas.services.OrdemVendaService;
 
 @RestController
 @RequestMapping("/vendas")
-public class VendasResource extends GessicaDataCollectionResourceController<OrdemVenda> {
+public class OrdemVendaCollectionResource extends DataCollectionResourceControllerImpl<OrdemVenda> {
 	
 	@Autowired private OrdemVendaService service;
 	

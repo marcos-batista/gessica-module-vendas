@@ -41,7 +41,7 @@ public class ClienteRepositoryImpl implements Repository {
 	}
 
 	@Override
-	@SuppressWarnings({ "hiding", "unchecked" })
+	@SuppressWarnings({ "unchecked", "hiding" })
 	public <Cliente> Collection<Cliente> listAll_() {
 		List<com.agroall.gessica.vendas.dataobjects.Cliente> result = mongo.findAll(com.agroall.gessica.vendas.dataobjects.Cliente.class);
 		return (Collection<Cliente>) result;

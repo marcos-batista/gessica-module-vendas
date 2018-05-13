@@ -12,7 +12,7 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 	private Collection<ItemOrdemVenda> itens;
 	
 	public OrdemVenda() {
-		this.itens = factoryItensOrdemVendCollection();
+		this.itens = factoryCollectionItemOrdemVenda();
 	}
 	
 	@Override
@@ -33,18 +33,13 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 		this.itens = itens;
 	}
 	
-	public void addItem(ItemOrdemVenda item) {
-		if(this.itens == null) { this.itens = factoryItensOrdemVendCollection(); }
-		this.itens.add(item);
+	public void addItemOrdemVenda(ItemOrdemVenda itemOrdemVenda) {
+		if(this.itens == null) { this.itens = factoryCollectionItemOrdemVenda(); }
+		this.itens.add(itemOrdemVenda);
 	}
 	
-	protected Collection<ItemOrdemVenda> factoryItensOrdemVendCollection() {
+	protected Collection<ItemOrdemVenda> factoryCollectionItemOrdemVenda() {
 		return new HashSet<ItemOrdemVenda>();
-	}
-	
-	//=================================================== métodos auxiliares ==============================================//
-	public ItemOrdemVenda factoryItem() {
-		return new ItemOrdemVenda();
 	}
 	
 }

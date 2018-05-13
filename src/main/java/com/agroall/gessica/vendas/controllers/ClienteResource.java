@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.agroall.gessica.controllers.GessicaDataObjectResourceController;
+import com.agroall.gessica.controllers.DataObjectResourceControllerImpl;
 import com.agroall.gessica.services.Service;
 import com.agroall.gessica.vendas.dataobjects.Cliente;
 import com.agroall.gessica.vendas.services.ClienteService;
@@ -16,7 +16,7 @@ import com.agroall.gessica.vendas.services.ClienteService;
 @RestController
 @RequestMapping("/cliente")
 @CrossOrigin
-public class ClienteResource extends GessicaDataObjectResourceController<Cliente> {
+public class ClienteResource extends DataObjectResourceControllerImpl<Cliente> {
 	
 	@Autowired private ClienteService service;
 	
