@@ -13,7 +13,7 @@ import com.agroall.gessica.vendas.dataobjects.OrdemVenda;
 import com.agroall.gessica.vendas.services.OrdemVendaService;
 
 @RestController
-@RequestMapping("/vendas")
+@RequestMapping("/ordensvenda")
 public class OrdemVendaCollectionResource extends DataCollectionResourceControllerImpl<OrdemVenda> {
 	
 	@Autowired private OrdemVendaService service;

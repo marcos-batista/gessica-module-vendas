@@ -8,8 +8,7 @@ import com.agroall.gessica.dataobjects.aspects.Persistent;
 @Document(collection = "clientes")
 public class Cliente extends com.agroall.gessica.dataobjects.Cliente implements Persistent<String> {
 	
-	@Id
-	private String id;
+	@Id private String id;
 	
 	@Override
 	public String getId() {

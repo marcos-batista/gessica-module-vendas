@@ -3,12 +3,16 @@ package com.agroall.gessica.vendas.dataobjects;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.agroall.gessica.dataobjects.Venda;
 import com.agroall.gessica.dataobjects.aspects.Persistent;
 
+@Document(collection = "ordensvenda")
 public class OrdemVenda extends Venda implements Persistent<String> {
 	
-	private String id;
+	@Id private String id;
 	private Collection<ItemOrdemVenda> itens;
 	
 	public OrdemVenda() {

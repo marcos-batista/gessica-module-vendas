@@ -4,10 +4,11 @@ import java.util.Collection;
 
 import org.springframework.stereotype.Service;
 
+import com.agroall.gessica.services.ServiceImpl;
 import com.agroall.gessica.vendas.dataobjects.ItemOrdemVenda;
 
 @Service
-public class ItemOrdemVendaService extends VendasService<ItemOrdemVenda> {
+public class ItemOrdemVendaService extends ServiceImpl<ItemOrdemVenda> {
 	
 	@Override
 	public ItemOrdemVenda factoryNewDataObject() {
