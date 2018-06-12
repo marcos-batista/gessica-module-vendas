@@ -1,7 +1,7 @@
 package com.agroall.gessica.vendas.dataobjects;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -43,7 +43,7 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 	}
 	
 	protected Collection<ItemOrdemVenda> factoryCollectionItemOrdemVenda() {
-		return new HashSet<ItemOrdemVenda>();
+		return new LinkedHashSet<ItemOrdemVenda>();
 	}
 	
 }
