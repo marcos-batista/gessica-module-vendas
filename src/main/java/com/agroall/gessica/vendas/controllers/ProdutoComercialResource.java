@@ -33,9 +33,9 @@ public class ProdutoComercialResource extends DataObjectResourceControllerImpl<P
 	
 	@Override
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public ProdutoComercial doPost(@RequestBody ProdutoComercial cliente) {
-		cliente.setId(null);
-		return super.doPost(cliente);
+	public ProdutoComercial doPost(@RequestBody ProdutoComercial produtoComercial) {
+		produtoComercial.setId(null);
+		return super.doPost(produtoComercial);
 	}
 	
 	@Override

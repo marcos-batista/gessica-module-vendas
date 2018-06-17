@@ -15,7 +15,10 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 	@Id private String id;
 	private Collection<ItemOrdemVenda> itens;
 	
+	private Double precoCalculado;
+	
 	public OrdemVenda() {
+		super();
 		this.itens = factoryCollectionItemOrdemVenda();
 	}
 	
@@ -40,10 +43,27 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 	public void addItemOrdemVenda(ItemOrdemVenda itemOrdemVenda) {
 		if(this.itens == null) { this.itens = factoryCollectionItemOrdemVenda(); }
 		this.itens.add(itemOrdemVenda);
+		calculatePreco();
 	}
 	
 	protected Collection<ItemOrdemVenda> factoryCollectionItemOrdemVenda() {
 		return new LinkedHashSet<ItemOrdemVenda>();
+	}
+	
+	public Double getPrecoCalculado() {
+		return precoCalculado;
+	}
+	
+	public void setPrecoCalculado(Double precoCalculado) {}
+	
+	public void calculatePreco() {
+		if(this.itens == null) this.precoCalculado = null;
+		if(this.itens.isEmpty()) this.precoCalculado = 0d;
+		Double precoCalculado = 0d;
+		for (ItemOrdemVenda itemOrdemVenda : this.itens) {
+			precoCalculado += itemOrdemVenda.getPrecoCalculado();
+		}
+		this.precoCalculado = precoCalculado;
 	}
 	
 }

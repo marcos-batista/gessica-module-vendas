@@ -32,15 +32,8 @@ public class OrdemVendaService extends ServiceImpl<OrdemVenda> {
 	}
 	
 	@Override
-	public OrdemVenda insert(OrdemVenda ordemVenda) {
+	protected void validateBeforeInsertOrUpdate(OrdemVenda ordemVenda) {
 		validateOrdemVendaBeforeSave(ordemVenda);
-		return super.insert(ordemVenda);
-	}
-	
-	@Override
-	public OrdemVenda update(OrdemVenda ordemVenda) {
-		validateOrdemVendaBeforeSave(ordemVenda);
-		return super.update(ordemVenda);
 	}
 	
 	protected void validateOrdemVendaBeforeSave(OrdemVenda ordemVenda) {
@@ -49,6 +42,7 @@ public class OrdemVendaService extends ServiceImpl<OrdemVenda> {
 		Collection<ItemOrdemVenda> itensOrdemVenda = ordemVenda.getItens();
 		for (ItemOrdemVenda itemOrdemVenda : itensOrdemVenda) {
 			if(itemOrdemVenda.getProdutoComercial() == null) throw new RuntimeException("Há pelo menos um item da ordem de venda cujo produto não foi informado");
+			if(itemOrdemVenda.getProdutoComercial().getId() == null) throw new RuntimeException("Há pelo menos um item da ordem de venda cujo produto é inválido");
 		}
 	}
 	

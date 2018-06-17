@@ -10,6 +10,10 @@ public class ProdutoComercial extends com.agroall.gessica.dataobjects.ProdutoCom
 	
 	@Id private String id;
 	
+	public ProdutoComercial() {
+		super();
+	}
+	
 	@Override
 	public String getId() {
 		return this.id;
