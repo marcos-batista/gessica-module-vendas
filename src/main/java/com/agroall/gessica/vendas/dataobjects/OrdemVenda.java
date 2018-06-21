@@ -1,7 +1,8 @@
 package com.agroall.gessica.vendas.dataobjects;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,7 +14,7 @@ import com.agroall.gessica.dataobjects.aspects.Persistent;
 public class OrdemVenda extends Venda implements Persistent<String> {
 	
 	@Id private String id;
-	private Collection<ItemOrdemVenda> itens;
+	private List<ItemOrdemVenda> itens;
 	
 	private Double precoCalculado;
 	
@@ -36,7 +37,7 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 		return itens;
 	}
 	
-	public void setItens(Collection<ItemOrdemVenda> itens) {
+	public void setItens(List<ItemOrdemVenda> itens) {
 		this.itens = itens;
 	}
 	
@@ -46,8 +47,8 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 		calculatePreco();
 	}
 	
-	protected Collection<ItemOrdemVenda> factoryCollectionItemOrdemVenda() {
-		return new LinkedHashSet<ItemOrdemVenda>();
+	protected List<ItemOrdemVenda> factoryCollectionItemOrdemVenda() {
+		return new ArrayList<ItemOrdemVenda>();
 	}
 	
 	public Double getPrecoCalculado() {
