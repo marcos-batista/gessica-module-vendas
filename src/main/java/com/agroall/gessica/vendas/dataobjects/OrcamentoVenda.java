@@ -1,8 +1,7 @@
 package com.agroall.gessica.vendas.dataobjects;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,24 +9,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.agroall.gessica.dataobjects.Venda;
 import com.agroall.gessica.dataobjects.aspects.Persistent;
 
-@Document(collection = "ordensvenda")
-public class OrdemVenda extends Venda implements Persistent<String> {
+@Document(collection = "orcamentosvenda")
+public class OrcamentoVenda extends Venda implements Persistent<String> {
 	
 	@Id private String id;
 	private Double precoCalculado;
 	
-	private List<ItemOrdemVenda> itens;
+	private Collection<ItemOrcamentoVenda> itens;
 	
-	public OrdemVenda() {
+	public OrcamentoVenda() {
 		super();
-		this.itens = factoryCollectionItemOrdemVenda();
+		this.itens = factoryCollectionItemOrcamentoVenda();
 	}
 	
 	@Override
 	public String getId() {
 		return this.id;
 	}
-	
+
 	@Override
 	public void setId(String id) {
 		this.id = id;
@@ -39,29 +38,29 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 	
 	public void setPrecoCalculado(Double precoCalculado) {}
 	
-	public Collection<ItemOrdemVenda> getItens() {
+	public Collection<ItemOrcamentoVenda> getItens() {
 		return itens;
 	}
 	
-	public void setItens(List<ItemOrdemVenda> itens) {
+	public void setItens(Collection<ItemOrcamentoVenda> itens) {
 		this.itens = itens;
 	}
 	
-	public void addItemOrdemVenda(ItemOrdemVenda itemOrdemVenda) {
-		if(this.itens == null) { this.itens = factoryCollectionItemOrdemVenda(); }
-		this.itens.add(itemOrdemVenda);
+	public void addItemOrcamentoVenda(ItemOrcamentoVenda itemOrcamentoVenda) {
+		if(this.itens == null) { this.itens = factoryCollectionItemOrcamentoVenda(); }
+		this.itens.add(itemOrcamentoVenda);
 		calculatePreco();
 	}
 	
-	protected List<ItemOrdemVenda> factoryCollectionItemOrdemVenda() {
-		return new ArrayList<ItemOrdemVenda>();
+	protected Collection<ItemOrcamentoVenda> factoryCollectionItemOrcamentoVenda() {
+		return new HashSet<ItemOrcamentoVenda>();
 	}
 	
 	protected void calculatePreco() {
 		if(getItens().isEmpty()) this.precoCalculado = 0d;
 		Double precoCalculado = 0d;
-		for (ItemOrdemVenda itemOrdemVenda : getItens()) {
-			precoCalculado += itemOrdemVenda.getPrecoCalculado();
+		for (ItemOrcamentoVenda itemOrcamentoVenda : getItens()) {
+			precoCalculado += itemOrcamentoVenda.getPrecoCalculado();
 		}
 		this.precoCalculado = precoCalculado;
 	}
