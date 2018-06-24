@@ -46,7 +46,7 @@ public class OrdemVendaDataResource extends DataObjectResourceControllerImpl<Ord
 	
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
-	public OrdemVenda doPut(@PathVariable(value = "id") String id, OrdemVenda ordemVenda) {
+	public OrdemVenda doPut(@PathVariable(value = "id") String id, @RequestBody OrdemVenda ordemVenda) {
 		ordemVenda.setId(id);
 		return super.doPut(id, ordemVenda);
 	}

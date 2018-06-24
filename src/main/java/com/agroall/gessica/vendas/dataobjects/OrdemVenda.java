@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.agroall.gessica.dataobjects.Venda;
 import com.agroall.gessica.dataobjects.aspects.Persistent;
 
-@Document(collection = "ordensvenda")
+@Document(collection = "vendas")
 public class OrdemVenda extends Venda implements Persistent<String> {
 	
 	@Id private String id;
@@ -21,6 +21,7 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 	public OrdemVenda() {
 		super();
 		this.itens = factoryCollectionItemOrdemVenda();
+		this.precoCalculado = resolvePrecoCalculado();
 	}
 	
 	@Override
@@ -33,11 +34,21 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 		this.id = id;
 	}
 	
+	public com.agroall.gessica.vendas.dataobjects.Cliente getCliente() {
+		return (com.agroall.gessica.vendas.dataobjects.Cliente) super.getCliente();
+	}
+	
+	public void setCliente(com.agroall.gessica.vendas.dataobjects.Cliente cliente) {
+		super.setCliente(cliente);
+	}
+	
 	public Double getPrecoCalculado() {
 		return precoCalculado;
 	}
 	
-	public void setPrecoCalculado(Double precoCalculado) {}
+	public void setPrecoCalculado(Double precoCalculado) {
+		this.precoCalculado = resolvePrecoCalculado();
+	}
 	
 	public Collection<ItemOrdemVenda> getItens() {
 		return itens;
@@ -45,25 +56,30 @@ public class OrdemVenda extends Venda implements Persistent<String> {
 	
 	public void setItens(List<ItemOrdemVenda> itens) {
 		this.itens = itens;
+		this.precoCalculado = resolvePrecoCalculado();
 	}
 	
 	public void addItemOrdemVenda(ItemOrdemVenda itemOrdemVenda) {
 		if(this.itens == null) { this.itens = factoryCollectionItemOrdemVenda(); }
 		this.itens.add(itemOrdemVenda);
-		calculatePreco();
+		this.precoCalculado = resolvePrecoCalculado();
 	}
 	
 	protected List<ItemOrdemVenda> factoryCollectionItemOrdemVenda() {
 		return new ArrayList<ItemOrdemVenda>();
 	}
 	
-	protected void calculatePreco() {
-		if(getItens().isEmpty()) this.precoCalculado = 0d;
-		Double precoCalculado = 0d;
-		for (ItemOrdemVenda itemOrdemVenda : getItens()) {
-			precoCalculado += itemOrdemVenda.getPrecoCalculado();
+	protected Double resolvePrecoCalculado() {
+		Double precoCalculado;
+		if(this.itens == null) { precoCalculado = null; return precoCalculado; }
+		if(this.itens.isEmpty()) { precoCalculado = 0d; return precoCalculado; }
+		precoCalculado = 0d;
+		for (ItemOrdemVenda itemOrdemVenda : this.itens) {
+			Double precoItem = itemOrdemVenda.getPrecoCalculado();
+			if(precoItem == null) { continue; }
+			precoCalculado += precoItem;
 		}
-		this.precoCalculado = precoCalculado;
+		return precoCalculado;
 	}
 	
 }

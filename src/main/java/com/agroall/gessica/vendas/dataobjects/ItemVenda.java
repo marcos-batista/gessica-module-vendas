@@ -4,7 +4,6 @@ public class ItemVenda extends com.agroall.gessica.dataobjects.ItemVenda {
 	
 	private Double margemLucroItem;
 	private Double descontoItem;
-	private Double precoCalculado2;
 	
 	private ProdutoComercial produtoComercial;
 	
@@ -14,16 +13,13 @@ public class ItemVenda extends com.agroall.gessica.dataobjects.ItemVenda {
 		this.descontoItem = 0d;
 	}
 	
-	@Override
-	public void setPrecoItem(Double precoItem) {}
-	
 	public Double getMargemLucroItem() {
 		return margemLucroItem;
 	}
 	
 	public void setMargemLucroItem(Double margemLucroItem) {
 		this.margemLucroItem = margemLucroItem;
-		calculatePreco();
+		this.precoCalculado = resolvePrecoCalculado();
 	}
 	
 	public Double getDescontoItem() {
@@ -32,21 +28,7 @@ public class ItemVenda extends com.agroall.gessica.dataobjects.ItemVenda {
 	
 	public void setDescontoItem(Double descontoItem) {
 		this.descontoItem = descontoItem;
-		calculatePreco();
-	}
-	
-	public Double getPrecoCalculado() {
-		return precoCalculado2;
-	}
-	
-	public void setPrecoCalculado(Double precoCalculado) {}
-	
-	@Override
-	protected void calculatePreco() {
-		if(super.getPrecoCalculado() == null) { this.precoCalculado2 = null; return; }
-		if(this.descontoItem == null) { this.precoCalculado2 = null; return; }
-		if(this.margemLucroItem == null) { this.precoCalculado2 = null; return; }
-		this.precoCalculado2 = ((super.getPrecoCalculado() - this.descontoItem) + this.margemLucroItem);
+		this.precoCalculado = resolvePrecoCalculado();
 	}
 	
 	public ProdutoComercial getProdutoComercial() {
@@ -55,7 +37,19 @@ public class ItemVenda extends com.agroall.gessica.dataobjects.ItemVenda {
 	
 	public void setProdutoComercial(ProdutoComercial produtoComercial) {
 		this.produtoComercial = produtoComercial;
-		super.setPrecoItem(this.produtoComercial.getPrecoCalculado());
+		if(produtoComercial == null) { return; }
+		Double precoItem = produtoComercial.getPrecoCalculado();
+		setPrecoItem(precoItem);
+	}
+	
+	@Override
+	protected Double resolvePrecoCalculado() {
+		Double precoCalculado = super.resolvePrecoCalculado();
+		if(this.descontoItem == null) { return precoCalculado; }
+		if(this.margemLucroItem == null) { return precoCalculado; }
+		precoCalculado = ((precoCalculado - this.descontoItem) + this.margemLucroItem);
+		this.precoCalculado = precoCalculado;
+		return precoCalculado;
 	}
 	
 }

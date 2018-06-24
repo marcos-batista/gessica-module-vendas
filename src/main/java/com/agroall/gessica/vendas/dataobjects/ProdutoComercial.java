@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.agroall.gessica.dataobjects.aspects.Persistent;
 
-@Document(collection = "produtoscomerciais")
+@Document(collection = "produtos")
 public class ProdutoComercial extends com.agroall.gessica.dataobjects.ProdutoComercial implements Persistent<String> {
 	
 	@Id private String id;
@@ -17,7 +17,7 @@ public class ProdutoComercial extends com.agroall.gessica.dataobjects.ProdutoCom
 		super();
 		this.margemLucroUnitario = 0d;
 		this.descontoUnitario = 0d;
-		calculatePreco();
+		resolvePrecoCalculado();
 	}
 	
 	@Override
@@ -33,7 +33,7 @@ public class ProdutoComercial extends com.agroall.gessica.dataobjects.ProdutoCom
 	@Override
 	public void setPrecoUnitario(Double precoUnitario) {
 		super.setPrecoUnitario(precoUnitario);
-		calculatePreco();
+		resolvePrecoCalculado();
 	}
 	
 	public Double getMargemLucroUnitario() {
@@ -42,7 +42,7 @@ public class ProdutoComercial extends com.agroall.gessica.dataobjects.ProdutoCom
 	
 	public void setMargemLucroUnitario(Double margemLucroUnitario) {
 		this.margemLucroUnitario = margemLucroUnitario;
-		calculatePreco();
+		resolvePrecoCalculado();
 	}
 	
 	public Double getDescontoUnitario() {
@@ -51,20 +51,24 @@ public class ProdutoComercial extends com.agroall.gessica.dataobjects.ProdutoCom
 	
 	public void setDescontoUnitario(Double descontoUnitario) {
 		this.descontoUnitario = descontoUnitario;
-		calculatePreco();
+		resolvePrecoCalculado();
 	}
 	
 	public Double getPrecoCalculado() {
 		return precoCalculado;
 	}
 	
-	public void setPrecoCalculado(Double precoCalculado) {}
+	public void setPrecoCalculado(Double precoCalculado) {
+		this.precoCalculado = resolvePrecoCalculado();
+	}
 	
-	protected void calculatePreco() {
-		if(getPrecoUnitario() == null) { this.precoCalculado = null; return; }
-		if(this.margemLucroUnitario == null) { this.precoCalculado = null; return; }
-		if(this.descontoUnitario == null) { this.precoCalculado = null; return; }
-		this.precoCalculado = ((getPrecoUnitario() - this.descontoUnitario) + this.margemLucroUnitario);
+	protected Double resolvePrecoCalculado() {
+		Double precoUnitario = getPrecoUnitario();
+		if(precoUnitario == null) { this.precoCalculado = null; return null;}
+		if(this.descontoUnitario == null) { this.precoCalculado = null; return null; }
+		if(this.margemLucroUnitario == null) { this.precoCalculado = null; return null; }
+		this.precoCalculado = ((precoUnitario - this.descontoUnitario) + this.margemLucroUnitario);
+		return this.precoCalculado;
 	}
 	
 }
