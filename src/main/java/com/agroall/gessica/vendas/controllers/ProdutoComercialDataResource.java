@@ -14,8 +14,8 @@ import com.agroall.gessica.vendas.dataobjects.ProdutoComercial;
 import com.agroall.gessica.vendas.services.ProdutoComercialService;
 
 @RestController
-@RequestMapping("/produto")
 @CrossOrigin
+@RequestMapping("/produto")
 public class ProdutoComercialDataResource extends DataObjectResourceControllerImpl<ProdutoComercial> {
 	
 	@Autowired private ProdutoComercialService service;

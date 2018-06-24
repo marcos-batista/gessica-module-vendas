@@ -14,8 +14,8 @@ import com.agroall.gessica.vendas.dataobjects.Cliente;
 import com.agroall.gessica.vendas.services.ClienteService;
 
 @RestController
-@RequestMapping("/cliente")
 @CrossOrigin
+@RequestMapping("/cliente")
 public class ClienteDataResource extends DataObjectResourceControllerImpl<Cliente> {
 	
 	@Autowired private ClienteService service;

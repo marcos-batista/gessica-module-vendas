@@ -4,7 +4,7 @@ public class ItemVenda extends com.agroall.gessica.dataobjects.ItemVenda {
 	
 	private Double margemLucroItem;
 	private Double descontoItem;
-	private Double precoCalculado;
+	private Double precoCalculado2;
 	
 	private ProdutoComercial produtoComercial;
 	
@@ -36,17 +36,17 @@ public class ItemVenda extends com.agroall.gessica.dataobjects.ItemVenda {
 	}
 	
 	public Double getPrecoCalculado() {
-		return precoCalculado;
+		return precoCalculado2;
 	}
 	
 	public void setPrecoCalculado(Double precoCalculado) {}
 	
 	@Override
 	protected void calculatePreco() {
-		if(super.getPrecoCalculado() == null) { this.precoCalculado = null; return; }
-		if(this.descontoItem == null) { this.precoCalculado = null; return; }
-		if(this.margemLucroItem == null) { this.precoCalculado = null; return; }
-		this.precoCalculado = ((super.getPrecoCalculado() - this.descontoItem) + this.margemLucroItem);
+		if(super.getPrecoCalculado() == null) { this.precoCalculado2 = null; return; }
+		if(this.descontoItem == null) { this.precoCalculado2 = null; return; }
+		if(this.margemLucroItem == null) { this.precoCalculado2 = null; return; }
+		this.precoCalculado2 = ((super.getPrecoCalculado() - this.descontoItem) + this.margemLucroItem);
 	}
 	
 	public ProdutoComercial getProdutoComercial() {
