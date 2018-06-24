@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.agroall.gessica.controllers.DataCollectionResourceControllerImpl;
 import com.agroall.gessica.services.Service;
-import com.agroall.gessica.vendas.dataobjects.OrdemVenda;
-import com.agroall.gessica.vendas.services.OrdemVendaService;
+import com.agroall.gessica.vendas.dataobjects.OrcamentoVenda;
+import com.agroall.gessica.vendas.services.OrcamentoVendaService;
 
 @RestController
-@RequestMapping("/vendas")
-public class OrdemVendaCollectionResource extends DataCollectionResourceControllerImpl<OrdemVenda> {
+@RequestMapping("/orcamentos")
+public class OrcamentoVendaCollectionResource extends DataCollectionResourceControllerImpl<OrcamentoVenda> {
 	
-	@Autowired private OrdemVendaService service;
+	@Autowired private OrcamentoVendaService service;
 	
 	@Override
-	protected Service<OrdemVenda> getService() {
+	protected Service<OrcamentoVenda> getService() {
 		return this.service;
 	}
 	
 	@Override
 	@RequestMapping(method = RequestMethod.GET)
-	public Collection<OrdemVenda> doList() {
+	public Collection<OrcamentoVenda> doList() {
 		return super.doList();
 	}
 	

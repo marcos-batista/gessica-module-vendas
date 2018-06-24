@@ -12,9 +12,9 @@ import com.agroall.gessica.vendas.dataobjects.ItemOrdemVenda;
 import com.agroall.gessica.vendas.services.ItemOrdemVendaService;
 
 @RestController
-@RequestMapping("/ordemvenda/item")
+@RequestMapping("/orcamento/item")
 @CrossOrigin
-public class ItemOrdemVendaResource extends DataObjectResourceControllerImpl<ItemOrdemVenda> {
+public class ItemOrcamentoVendaDataResource extends DataObjectResourceControllerImpl<ItemOrdemVenda> {
 	
 	@Autowired private ItemOrdemVendaService service;
 	
