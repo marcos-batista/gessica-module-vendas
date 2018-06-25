@@ -3,6 +3,7 @@ package com.agroall.gessica.vendas.controllers;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import com.agroall.gessica.vendas.dataobjects.ProdutoComercial;
 import com.agroall.gessica.vendas.services.ProdutoComercialService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/produtos")
 public class ProdutoComercialCollectionResource extends DataCollectionResourceControllerImpl<ProdutoComercial> {
 	
