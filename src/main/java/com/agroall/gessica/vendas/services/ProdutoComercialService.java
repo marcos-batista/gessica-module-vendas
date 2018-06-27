@@ -28,4 +28,16 @@ public class ProdutoComercialService extends ServiceImpl<ProdutoComercial> {
 		return new ProdutoComercial();
 	}
 	
+	@Override
+	protected void validateBeforeInsertOrUpdate(ProdutoComercial produtoComercial) {
+		super.validateBeforeInsertOrUpdate(produtoComercial);
+		if(produtoComercial.getDescricao() == null || produtoComercial.getDescricao().trim().isEmpty()) {
+			throw new RuntimeException("Descrição do produto não foi informada!");
+		}
+		//TODO: implementar validação que checa se o código informado é de um produto insumo válido.
+		if(produtoComercial.getCodigo() == null || produtoComercial.getCodigo().trim().isEmpty()) {
+			throw new RuntimeException("Código do produto não foi informado!");
+		}
+	}
+	
 }
